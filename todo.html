@@ -6,31 +6,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
+  <script src="todo.js"></script>
 </head>
 
 <body>
   <div id="myDIV" class="header">
     <h2>My To Do List</h2>
-    <input type="text" id="myInput" placeholder="Title...">
-    <span onclick="newElement()" class="addBtn">Add</span>
+    <input type="text" id="toDoNameInput" placeholder="Title...">
+    <span class="addBtn" id="addBtn">Add</span>
+  </div>
+  <div id="todoList">
+    <ul id = "ulTodo">
+      <li>test</li>
+      <li>test</li>
+      <li>test</li>
+    </ul>
   </div>
 
-  <ul id="myUL">
-    <li>Test Prod</li>
-    <li class="checked">FT PR/345</li>
-    <li>Team meeting</li>
-    <li>Learn how to code</li>
-    <li>TA - work on scenario</li>
-    <li>IT of the release</li>
-  </ul>
-
-  <div id="DoneList" class="DoneList">
-    <h2>Done Today</h2>
-    <textarea id="textDone" rows="10" cols="50" class="textDone">
-     Here will be the list of what's done today 
-      </textarea>
-    <div onclick="" class="sendBtn">Send to Slack</div>
-  </div>
 </body>
 
 </html>
