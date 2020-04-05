@@ -1,14 +1,11 @@
 interface ITodo{
+    id: string;
     name:string;
     completed: boolean;
 }
-/* Question WHY??: Implementing an interface helps maintain code consistency; 
-in large applications, if any class implements an interface, that would
-act as a contract between the class which implements the interface and 
-the class/module which creates an object of this class. An interface provides
-code abstraction and helps us create more manageable code. As we discussed earlier,
-an interface is just a TypeScript concept and, upon compilation, no JavaScript code is generated.*/
+
 class Todo implements ITodo{
+    public 
     public name:string;
     public completed: boolean;
     constructor(name:string, completed:boolean){
