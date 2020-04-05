@@ -11,7 +11,7 @@ var Todo = /** @class */ (function () {
     }
     return Todo;
 }());
-// another class which will implement all functionality
+// another class which will implement all functionality1
 var TodoList = /** @class */ (function () {
     function TodoList() {
     }
