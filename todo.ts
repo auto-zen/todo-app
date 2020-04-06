@@ -13,7 +13,7 @@ class Todo implements ITodo{
         this.completed = completed;
     }
 }
-// another class which will implement all functionality
+// another class which will implement all functionality!!
 class TodoList {
     public static allTodos: Todo[] = new Array;
     createTodoItem(name: string) {
