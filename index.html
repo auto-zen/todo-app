@@ -5,8 +5,9 @@
   <title>QA Todo list</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css">
-  <script src="todo.js"></script>
+  <link rel="stylesheet" href="style.css">
+  
+
 </head>
 
 <body>
@@ -15,14 +16,13 @@
     <input type="text" id="toDoNameInput" placeholder="Title...">
     <span class="addBtn" id="addBtn">Add</span>
   </div>
-  <div id="todoList1">
-    <ul id = "ulTodo">
-      <li>test</li>
-      <li>test</li>
-      <li>test</li>
-    </ul>
+  <div id="todoList">
   </div>
-
+  <span class="sendBtn" id="slackBtn">Generate slack list</span>
+  <div id="slackDiv">
+  </div>
+  
+  <script src="./dist/dist.bundle.js"></script>
 </body>
 
 </html>

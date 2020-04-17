@@ -1,5 +1,7 @@
-{"compilerOptions": {
-    "target": "ES5",
-    "module": "commonjs",
-    "sourceMap": true
-}}
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "module": "commonjs",
+        "target": "es5",   
+    }
+}
