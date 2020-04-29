@@ -1,7 +1,5 @@
 import { TodoItem, TodoList } from "./todo_list";
-import { todoController } from "./todo_controller";
-
-
+import { view } from "./todo_controller";
 
 interface TodoListView {
     render(todoList: ReadonlyArray<TodoItem>): void;
@@ -21,7 +19,7 @@ export class HTMLTodoListView implements TodoListView {
     }
 
     private readonly _todoList: TodoList = new TodoList();
-    
+
     clearInput(): void {
         this.todoInput.value = '';
     }
@@ -47,11 +45,11 @@ export class HTMLTodoListView implements TodoListView {
     }
 
     addDeleteEventListener(span: HTMLElement, item: TodoItem) {
-        span.addEventListener('click', () => todoController.removeTodo(item.TodoItemId));
+        span.addEventListener('click', () => this.removeTodo(item.TodoItemId));
     }
 
     addToggleEventListener(li: HTMLLIElement, item: TodoItem) {
-        li.addEventListener('click', () => todoController.toggleTodo(item.TodoItemId));
+        li.addEventListener('click', () => this.toggleTodo(item.TodoItemId));
         if (item.TodoItemState) {
             console.log('here should be changing class');
             li.setAttribute('class', 'checked');
@@ -70,4 +68,61 @@ export class HTMLTodoListView implements TodoListView {
             ul.appendChild(li);
         });
     }
+
+    addTodo(): void {
+        // get the value from the view
+        const todoValue = this.getInput();
+        // verify there is something to add
+        if ('' !== todoValue.TodoItemName) {
+            console.log('adding todo from controller');
+            // add new item to the list
+            this._todoList.addTodo(todoValue);
+            this.clearInput();
+            this.render(this._todoList.TodoList);
+        }
+    }
+
+    removeTodo(id: number): void {
+        if (id) {
+            this._todoList.deleteTodo(id);
+            this.render(this._todoList.TodoList);
+        }
+    }
+
+    toggleTodo(id: number): void {
+        if (id) {
+            this._todoList.toggleTodo(id);
+            this.render(this._todoList.TodoList);
+        }
+    }
+
+    getTodoData(view: HTMLTodoListView) {
+        console.log('getting data from JSON file');
+        let request = new XMLHttpRequest();
+        
+        request.open('GET', './src/todo.json', true);
+        request.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.responseText) {
+                    let todoParsed = view.parseTodoItems(this.responseText);            
+                    view.render(todoParsed);
+                } else { console.log('no file'); }
+            }
+        }
+        request.send();
+    }
+
+    parseTodoItems(todoJSON) {
+        if (todoJSON) {
+            let todoArray = JSON.parse(todoJSON)
+            for (let i = 0; i < todoArray.length; i++) {
+                let todoItem = new TodoItem(todoArray[i].name, todoArray[i].state);
+                this._todoList.addTodo(todoItem);
+            }
+        }
+        console.log('parsed array:', this._todoList.TodoList)
+        return this._todoList.TodoList;
+    }
 }
+
+

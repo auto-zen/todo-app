@@ -1,13 +1,12 @@
-[ 
-    { 
-        "id": 1, 
-        "name": "Call Dan", 
-        "state": true 
-    }, 
-    { 
-        "id": 2, 
-        "name": "Test prod", 
-        "state": false 
-    } 
-    ] 
-    
+[
+    {
+        "id": 1,
+        "name": "Call Dan",
+        "state": true
+    },
+    {
+        "id": 2,
+        "name": "Test prod",
+        "state": false
+    }
+]
