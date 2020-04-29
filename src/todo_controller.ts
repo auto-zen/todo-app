@@ -4,7 +4,7 @@ export const view = new HTMLTodoListView();
 // export const todoController = new TodoController(view);
 
 window.onload = function () {
-    view.getTodoData(view);
+    // view.getTodoData(view);
     document.getElementById('addBtn').addEventListener('click', () => view.addTodo());
 }
 
